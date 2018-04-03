@@ -1,0 +1,26 @@
+version: 2.0
+jobs:
+  build:
+    docker:
+      - image: circleci/node
+    working_directory: ~/circleci-demo-schedule
+    steps:
+      - checkout
+      - run:
+          name: Run Build Command
+          command: echo "hello I am building and testing"
+  deploy:
+    docker:
+      - image: circleci/node
+    working_directory: ~/circleci-demo-schedule
+    steps:
+      - checkout
+      - run:
+          name: Run Deploy Command
+          command: echo "hello I am deploying"
+
+workflows:
+  version: 2
+  commit-workflow:
+    jobs:
+      - build
